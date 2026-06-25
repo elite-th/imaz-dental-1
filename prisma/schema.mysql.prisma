@@ -1,0 +1,193 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  email     String   @unique @db.VarChar(255)
+  name      String?  @db.VarChar(255)
+  password  String   @default("") @db.VarChar(255)
+  role      String   @default("secretary") @db.VarChar(50)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  notifications NotificationSubscription[]
+
+  @@map("users")
+}
+
+model Post {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  title     String   @db.VarChar(500)
+  content   String?  @db.Text
+  published Boolean  @default(false)
+  authorId  String   @db.VarChar(30)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("posts")
+}
+
+model Booking {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  fullName  String   @map("full_name") @db.VarChar(255)
+  phone     String   @db.VarChar(50)
+  email     String?  @db.VarChar(255)
+  service   String   @db.VarChar(255)
+  date      String   @db.VarChar(20)
+  time      String   @db.VarChar(10)
+  notes     String?  @db.Text
+  status    String   @default("pending") @db.VarChar(30)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("bookings")
+}
+
+model Patient {
+  id          String   @id @default(cuid()) @db.VarChar(30)
+  fullName    String   @map("full_name") @db.VarChar(255)
+  phone       String   @db.VarChar(50)
+  email       String?  @db.VarChar(255)
+  notes       String?  @db.Text
+  dateOfBirth String?  @map("date_of_birth") @db.VarChar(20)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("patients")
+}
+
+model Message {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phone     String?  @db.VarChar(50)
+  subject   String   @db.VarChar(500)
+  message   String   @db.Text
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("messages")
+}
+
+model Faq {
+  id         String   @id @default(cuid()) @db.VarChar(30)
+  questionFa String   @map("question_fa") @db.Text
+  answerFa   String   @map("answer_fa") @db.Text
+  questionEn String   @map("question_en") @db.Text
+  answerEn   String   @map("answer_en") @db.Text
+  questionAr String   @map("question_ar") @db.Text
+  answerAr   String   @map("answer_ar") @db.Text
+  sortOrder  Int      @default(0) @map("sort_order")
+  isActive   Boolean  @default(true) @map("is_active")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("faqs")
+}
+
+model GalleryItem {
+  id         String   @id @default(cuid()) @db.VarChar(30)
+  titleFa    String   @map("title_fa") @db.VarChar(500)
+  subtitleFa String   @map("subtitle_fa") @db.VarChar(500)
+  titleEn    String   @map("title_en") @db.VarChar(500)
+  subtitleEn String   @map("subtitle_en") @db.VarChar(500)
+  titleAr    String   @map("title_ar") @db.VarChar(500)
+  subtitleAr String   @map("subtitle_ar") @db.VarChar(500)
+  beforeImage String  @map("before_image") @db.VarChar(500)
+  afterImage  String  @map("after_image") @db.VarChar(500)
+  sortOrder  Int      @default(0) @map("sort_order")
+  isActive   Boolean  @default(true) @map("is_active")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("gallery_items")
+}
+
+model SiteText {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  key       String   @unique @db.VarChar(255)
+  valueFa   String   @map("value_fa") @db.Text
+  valueEn   String   @map("value_en") @db.Text
+  valueAr   String   @map("value_ar") @db.Text
+  group     String   @default("general") @db.VarChar(100)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("site_texts")
+}
+
+model ClinicSetting {
+  id    String @id @default(cuid()) @db.VarChar(30)
+  key   String @unique @db.VarChar(255)
+  value String @db.Text
+
+  @@map("clinic_settings")
+}
+
+model SlotConfig {
+  id           String   @id @default(cuid()) @db.VarChar(30)
+  slotDuration Int      @default(20) @map("slot_duration")
+  bufferTime   Int      @default(0) @map("buffer_time")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("slot_configs")
+}
+
+model ClosedSlot {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  date      String   @db.VarChar(20)               // YYYY-MM-DD (Gregorian)
+  time      String?  @db.VarChar(10)                // HH:MM — null means full day closed
+  reason    String?  @db.VarChar(255)               // holiday, break, etc.
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("closed_slots")
+}
+
+model Collaboration {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  nameFa    String   @map("name_fa") @db.VarChar(255)
+  nameEn    String   @map("name_en") @db.VarChar(255)
+  nameAr    String   @map("name_ar") @db.VarChar(255)
+  image     String   @default("") @db.VarChar(500)
+  sortOrder Int      @default(0) @map("sort_order")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("collaborations")
+}
+
+model NotificationSubscription {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  userId    String?  @db.VarChar(30)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique @db.VarChar(500)
+  p256dh    String   @db.VarChar(255)
+  auth      String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("notification_subscriptions")
+}
+
+model WorkingHour {
+  id        String   @id @default(cuid()) @db.VarChar(30)
+  day       String   @db.VarChar(20)                  // e.g. "saturday", "sunday", etc.
+  isOpen    Boolean  @default(true) @map("is_open")
+  openTime  String   @default("09:00") @map("open_time") @db.VarChar(10)
+  closeTime String   @default("18:00") @map("close_time") @db.VarChar(10)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("working_hours")
+}

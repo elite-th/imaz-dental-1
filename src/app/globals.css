@@ -1,0 +1,1742 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-playfair);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  /* Dental Teal palette - trust, health, cleanliness */
+  --color-teal-50: #F0FAF8;
+  --color-teal-100: #D5F0EB;
+  --color-teal-200: #A8E0D5;
+  --color-teal-300: #6BCDB8;
+  --color-teal-400: #2DA89E;
+  --color-teal-500: #1B7A6E;
+  --color-teal-600: #16635A;
+  --color-teal-700: #114E47;
+  --color-teal-800: #0D3A35;
+  --color-teal-900: #092824;
+  /* Coral accent palette - warmth, smiles, results */
+  --color-coral-50: #FFF5F6;
+  --color-coral-100: #FFE4E8;
+  --color-coral-200: #FFCDD5;
+  --color-coral-300: #FFA3B3;
+  --color-coral-400: #E8637C;
+  --color-coral-500: #D4465F;
+  --color-coral-600: #B8344D;
+  --color-coral-700: #9A2840;
+  --color-coral-800: #7C1F34;
+  --color-coral-900: #5E1728;
+  /* Gold palette - preserved for subtle accents only */
+  --color-gold-50: #FFFDF5;
+  --color-gold-100: #FFF9E0;
+  --color-gold-200: #F5EDD0;
+  --color-gold-300: #E8D5A0;
+  --color-gold-400: #D4B870;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #B08D3E;
+  --color-gold-700: #8B6F2E;
+  --color-gold-800: #6B5523;
+  --color-gold-900: #4A3A17;
+  /* Clean cream/mint neutrals */
+  --color-cream-50: #FAFCFB;
+  --color-cream-100: #F5F9F7;
+  --color-cream-200: #F0F7F5;
+  --color-cream-300: #E5F0EC;
+  --color-cream-400: #D0E3DC;
+  /* Navy charcoal (professional dark) */
+  --color-charcoal-50: #F0F2F5;
+  --color-charcoal-100: #D8DCE3;
+  --color-charcoal-200: #B8BFC9;
+  --color-charcoal-300: #8A95A5;
+  --color-charcoal-400: #5E6D80;
+  --color-charcoal-500: #3D4F63;
+  --color-charcoal-600: #2C3A4D;
+  --color-charcoal-700: #1F2B3D;
+  --color-charcoal-800: #1A2332;
+  --color-charcoal-900: #111820;
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Dental clinic palette: Teal + Coral + Mint + Navy */
+  --background: #FAFCFB;
+  --foreground: #1A2332;
+  --card: #FFFFFF;
+  --card-foreground: #1A2332;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A2332;
+  --primary: #1B7A6E;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F0F7F5;
+  --secondary-foreground: #1A2332;
+  --muted: #F0F7F5;
+  --muted-foreground: #5E6D80;
+  --accent: #E8637C;
+  --accent-foreground: #FFFFFF;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(27, 122, 110, 0.12);
+  --input: rgba(27, 122, 110, 0.15);
+  --ring: #1B7A6E;
+  --chart-1: #1B7A6E;
+  --chart-2: #2DA89E;
+  --chart-3: #1A2332;
+  --chart-4: #E8637C;
+  --chart-5: #5E6D80;
+  --sidebar: #FAFCFB;
+  --sidebar-foreground: #1A2332;
+  --sidebar-primary: #1B7A6E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F0F7F5;
+  --sidebar-accent-foreground: #1A2332;
+  --sidebar-border: rgba(27, 122, 110, 0.10);
+  --sidebar-ring: #1B7A6E;
+
+  /* Dental Teal palette */
+  --teal-50: #F0FAF8;
+  --teal-100: #D5F0EB;
+  --teal-200: #A8E0D5;
+  --teal-300: #6BCDB8;
+  --teal-400: #2DA89E;
+  --teal-500: #1B7A6E;
+  --teal-600: #16635A;
+  --teal-700: #114E47;
+  --teal-800: #0D3A35;
+  --teal-900: #092824;
+
+  /* Coral accent palette */
+  --coral-50: #FFF5F6;
+  --coral-100: #FFE4E8;
+  --coral-200: #FFCDD5;
+  --coral-300: #FFA3B3;
+  --coral-400: #E8637C;
+  --coral-500: #D4465F;
+  --coral-600: #B8344D;
+  --coral-700: #9A2840;
+  --coral-800: #7C1F34;
+  --coral-900: #5E1728;
+
+  /* Gold palette - subtle accents only */
+  --gold-50: #FFFDF5;
+  --gold-100: #FFF9E0;
+  --gold-200: #F5EDD0;
+  --gold-300: #E8D5A0;
+  --gold-400: #D4B870;
+  --gold-500: #C5A059;
+  --gold-600: #B08D3E;
+  --gold-700: #8B6F2E;
+  --gold-800: #6B5523;
+  --gold-900: #4A3A17;
+
+  /* Clean cream/mint neutrals */
+  --cream-50: #FAFCFB;
+  --cream-100: #F5F9F7;
+  --cream-200: #F0F7F5;
+  --cream-300: #E5F0EC;
+  --cream-400: #D0E3DC;
+
+  /* Navy charcoal (professional dark) */
+  --charcoal-50: #F0F2F5;
+  --charcoal-100: #D8DCE3;
+  --charcoal-200: #B8BFC9;
+  --charcoal-300: #8A95A5;
+  --charcoal-400: #5E6D80;
+  --charcoal-500: #3D4F63;
+  --charcoal-600: #2C3A4D;
+  --charcoal-700: #1F2B3D;
+  --charcoal-800: #1A2332;
+  --charcoal-900: #111820;
+}
+
+.dark {
+  --background: #111820;
+  --foreground: #F0F2F5;
+  --card: #1A2332;
+  --card-foreground: #F0F2F5;
+  --popover: #1A2332;
+  --popover-foreground: #F0F2F5;
+  --primary: #2DA89E;
+  --primary-foreground: #111820;
+  --secondary: #1A2332;
+  --secondary-foreground: #F0F2F5;
+  --muted: #1A2332;
+  --muted-foreground: #8A95A5;
+  --accent: #E8637C;
+  --accent-foreground: #FFFFFF;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(27, 122, 110, 0.15);
+  --input: rgba(27, 122, 110, 0.18);
+  --ring: #2DA89E;
+  --chart-1: #2DA89E;
+  --chart-2: #1B7A6E;
+  --chart-3: #F0F2F5;
+  --chart-4: #E8637C;
+  --chart-5: #8A95A5;
+  --sidebar: #1A2332;
+  --sidebar-foreground: #F0F2F5;
+  --sidebar-primary: #2DA89E;
+  --sidebar-primary-foreground: #111820;
+  --sidebar-accent: #1A2332;
+  --sidebar-accent-foreground: #F0F2F5;
+  --sidebar-border: rgba(27, 122, 110, 0.12);
+  --sidebar-ring: #2DA89E;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ================================================================== */
+/*  RTL Font: Vazirmatn — Single unified font for Persian/Arabic       */
+/* ================================================================== */
+html[dir="rtl"],
+html[dir="rtl"] *,
+html[dir="rtl"] body {
+  font-family: var(--font-vazirmatn) !important;
+}
+html[dir="rtl"] {
+  --font-sans: var(--font-vazirmatn) !important;
+  --font-display: var(--font-vazirmatn) !important;
+}
+
+/* ================================================================== */
+/*  UNIFIED COLOR PALETTE — Teal + Coral + Mint + Navy                 */
+/*  ONE palette for ALL languages. No RTL color overrides needed.      */
+/* ================================================================== */
+
+/* Section backgrounds are handled via Tailwind classes in components, */
+/* but these utility classes provide named section bg tokens:         */
+:root {
+  --bg-hero: linear-gradient(160deg, #FAFCFB 0%, #F0F7F5 30%, #F5F9F7 60%, #FFFFFF 100%);
+  --bg-trustbar: #FAFCFB;
+  --bg-about: #FFFFFF;
+  --bg-services: #F5F9F7;
+  --bg-process: #1A2332;
+  --bg-gallery: #FFFFFF;
+  --bg-testimonials: #F0F7F5;
+  --bg-booking: #FAFCFB;
+  --bg-footer: #111820;
+}
+
+/* ================================================================== */
+/*  RTL Typography & Spacing Rules                                     */
+/*  (NO color overrides — colors are unified for all languages)        */
+/* ================================================================== */
+
+/* RTL body line-height — Persian/Arabic glyphs are taller */
+:root[dir="rtl"] body {
+  line-height: 1.8;
+  font-feature-settings: "calt" 1, "liga" 1, "rlig" 1;
+  -webkit-font-feature-settings: "calt" 1, "liga" 1, "rlig" 1;
+}
+:root[dir="rtl"] p,
+:root[dir="rtl"] .text-sm,
+:root[dir="rtl"] .text-base,
+:root[dir="rtl"] .text-lg {
+  line-height: 1.8;
+}
+
+/* H1 larger in RTL: compensate for Persian font visual weight */
+:root[dir="rtl"] h1 {
+  font-size: calc(clamp(2rem, 5vw, 4.5rem) + 2px) !important;
+  line-height: 1.4 !important;
+}
+
+/* Cursive scripts (Arabic/Persian) don't have uppercase; letter-spacing breaks them */
+:root[dir="rtl"] .uppercase {
+  text-transform: none;
+  letter-spacing: normal !important;
+}
+:root[dir="rtl"] [class*="tracking-"] {
+  letter-spacing: normal !important;
+}
+
+/* Service cards: equal height in RTL with longer text */
+.service-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.service-card .svc-arrow {
+  margin-top: auto;
+}
+
+/* CTA buttons: allow text expansion for Arabic/Persian */
+.btn-cta {
+  white-space: nowrap;
+  min-inline-size: max-content;
+}
+
+/* Time slot: wider padding for RTL numerals */
+:root[dir="rtl"] .time-slot {
+  padding-inline: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fix CTA hover background-position for RTL */
+:root[dir="rtl"] .btn-cta:hover {
+  background-position: left center;
+}
+
+/* RTL CTA Button — disable letter-spacing for cursive scripts */
+:root[dir="rtl"] .btn-cta {
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+}
+
+/* ================================================================== */
+/*  RTL Whitespace — More breathing room                               */
+/* ================================================================== */
+
+:root[dir="rtl"] .py-8 {
+  padding-block: 2rem !important;
+}
+:root[dir="rtl"] .sm\:py-12 {
+  padding-block: 3rem !important;
+}
+:root[dir="rtl"] .lg\:py-16 {
+  padding-block: 4rem !important;
+}
+
+:root[dir="rtl"] h1,
+:root[dir="rtl"] h2 {
+  margin-block-end: 1rem !important;
+}
+:root[dir="rtl"] h3 {
+  margin-block-end: 0.75rem !important;
+}
+
+:root[dir="rtl"] p {
+  margin-block-end: 0.5rem;
+}
+
+:root[dir="rtl"] .mb-10 {
+  margin-block-end: 1.5rem !important;
+}
+:root[dir="rtl"] .mb-12 {
+  margin-block-end: 1.75rem !important;
+}
+
+:root[dir="rtl"] .service-card {
+  padding: 1.85rem !important;
+}
+
+:root[dir="rtl"] .testi-glass {
+  padding: 2rem !important;
+}
+
+:root[dir="rtl"] .process-card {
+  padding: 2.25rem !important;
+}
+
+:root[dir="rtl"] .mb-5 {
+  margin-block-end: 1rem !important;
+}
+:root[dir="rtl"] .mb-6 {
+  margin-block-end: 1.25rem !important;
+}
+:root[dir="rtl"] .mb-14 {
+  margin-block-end: 2rem !important;
+}
+:root[dir="rtl"] .lg\:mb-16 {
+  margin-block-end: 2.5rem !important;
+}
+:root[dir="rtl"] .lg\:mb-20 {
+  margin-block-end: 3rem !important;
+}
+
+:root[dir="rtl"] .gap-5 {
+  gap: 1rem !important;
+}
+:root[dir="rtl"] .gap-6 {
+  gap: 1.25rem !important;
+}
+:root[dir="rtl"] .gap-8 {
+  gap: 1.5rem !important;
+}
+
+:root[dir="rtl"] .space-y-5 > * + * {
+  margin-block-start: 1rem !important;
+}
+
+/* ================================================================== */
+/*  CSS Logical Properties                                             */
+/* ================================================================== */
+
+.float-group label {
+  inset-inline-start: 44px;
+}
+
+:root[dir="rtl"] .scroll-progress {
+  inset-inline-start: 0;
+}
+
+/* ================================================================== */
+/*  Custom Scrollbar — Teal tinted                                     */
+/* ================================================================== */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(27, 122, 110, 0.25) transparent;
+}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(27, 122, 110, 0.25); border-radius: 99px; transition: background 0.3s; }
+::-webkit-scrollbar-thumb:hover { background: rgba(27, 122, 110, 0.45); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ================================================================== */
+/*  Slot Grid Custom Scrollbar                                          */
+/* ================================================================== */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(27, 122, 110, 0.2) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar { width: 5px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(27, 122, 110, 0.2); border-radius: 99px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(27, 122, 110, 0.35); }
+
+/* ================================================================== */
+/*  Section scroll offset — accounts for sticky header height          */
+/* ================================================================== */
+section[id] {
+  scroll-margin-top: 100px;
+}
+@media (max-width: 1023px) {
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+}
+
+/* ================================================================== */
+/*  Scroll Progress — Teal gradient                                    */
+/* ================================================================== */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, #1B7A6E, #2DA89E, #6BCDB8);
+  z-index: 100;
+}
+
+/* ================================================================== */
+/*  Scroll Reveal Animations — Subtle                                  */
+/* ================================================================== */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: .06s; } .reveal.d2 { transition-delay: .12s; } .reveal.d3 { transition-delay: .18s; }
+.reveal.d4 { transition-delay: .24s; } .reveal.d5 { transition-delay: .3s; }
+.reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+:root[dir="rtl"] .reveal-left { transform: translateX(50px); }
+:root[dir="rtl"] .reveal-right { transform: translateX(-50px); }
+.reveal-scale { opacity: 0; transform: scale(0.90); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ================================================================== */
+/*  Stagger Children                                                   */
+/* ================================================================== */
+.stagger > * { opacity: 0; transform: translateY(20px); transition: all 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+.stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.06s; }
+.stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.12s; }
+.stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.18s; }
+.stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.24s; }
+.stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:.30s; }
+.stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:.36s; }
+.stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:.42s; }
+
+/* ================================================================== */
+/*  Hero Floating Shapes — Animated decorative elements                 */
+/* ================================================================== */
+.hero-float-1 {
+  animation: heroFloat1 8s ease-in-out infinite;
+}
+@keyframes heroFloat1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-12px) rotate(5deg); }
+  50% { transform: translateY(-6px) rotate(-3deg); }
+  75% { transform: translateY(-14px) rotate(2deg); }
+}
+
+.hero-float-2 {
+  animation: heroFloat2 10s ease-in-out infinite;
+}
+@keyframes heroFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-10px) rotate(-4deg); }
+  60% { transform: translateY(-16px) rotate(3deg); }
+  80% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+.hero-float-3 {
+  animation: heroFloat3 7s ease-in-out infinite;
+}
+@keyframes heroFloat3 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(-18px) rotate(6deg); }
+  70% { transform: translateY(-8px) rotate(-4deg); }
+}
+
+.hero-float-4 {
+  animation: heroFloat4 12s ease-in-out infinite;
+}
+@keyframes heroFloat4 {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  33% { transform: translateY(-10px) rotate(8deg) scale(1.05); }
+  66% { transform: translateY(-5px) rotate(-5deg) scale(0.97); }
+}
+
+.hero-float-5 {
+  animation: heroFloat5 9s ease-in-out infinite;
+}
+@keyframes heroFloat5 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(10deg); }
+}
+
+.hero-float-6 {
+  animation: heroFloat6 11s ease-in-out infinite;
+}
+@keyframes heroFloat6 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+}
+
+.hero-float-7 {
+  animation: heroFloat7 8s ease-in-out infinite;
+}
+@keyframes heroFloat7 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-16px) scale(1.15); opacity: 0.9; }
+}
+
+.hero-float-8 {
+  animation: heroFloat8 6s ease-in-out infinite;
+}
+@keyframes heroFloat8 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.2); }
+}
+
+/* Molecular dots pulse */
+.hero-mol-dot-1, .hero-mol-dot-2, .hero-mol-dot-3,
+.hero-mol-dot-4, .hero-mol-dot-5, .hero-mol-dot-6 {
+  animation: molPulse 3s ease-in-out infinite;
+}
+.hero-mol-dot-2 { animation-delay: 0.5s; }
+.hero-mol-dot-3 { animation-delay: 1s; }
+.hero-mol-dot-4 { animation-delay: 1.5s; }
+.hero-mol-dot-5 { animation-delay: 2s; }
+.hero-mol-dot-6 { animation-delay: 2.5s; }
+@keyframes molPulse {
+  0%, 100% { r: 2; opacity: 0.6; }
+  50% { r: 3.5; opacity: 1; }
+}
+
+/* Molecular lines flow */
+.hero-mol-line-1, .hero-mol-line-2, .hero-mol-line-3, .hero-mol-line-4 {
+  animation: molFlow 4s linear infinite;
+  stroke-dashoffset: 0;
+}
+.hero-mol-line-2 { animation-delay: 1s; }
+.hero-mol-line-3 { animation-delay: 2s; }
+.hero-mol-line-4 { animation-delay: 3s; }
+@keyframes molFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -30; }
+}
+
+/* Spinning rings */
+.hero-ring-spin {
+  animation: ringSpin 30s linear infinite;
+}
+@keyframes ringSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero-ring-spin-reverse {
+  animation: ringSpinReverse 25s linear infinite;
+}
+@keyframes ringSpinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* ================================================================== */
+/*  Smile Curve — Animated draw-in                                      */
+/* ================================================================== */
+.hero-smile-path {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: smileDrawIn 3s ease-out 1s forwards;
+}
+@keyframes smileDrawIn {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-smile-path-2 {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: smileDrawIn2 4s ease-out 1.5s forwards;
+}
+@keyframes smileDrawIn2 {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Smile curves gentle float */
+.hero-smile-curve {
+  animation: smileFloat 7s ease-in-out infinite;
+}
+.hero-smile-curve-2 {
+  animation: smileFloat2 9s ease-in-out infinite;
+}
+@keyframes smileFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes smileFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* ================================================================== */
+/*  Dental Tool Icons — Floating animations                             */
+/* ================================================================== */
+.hero-dental-float-1 {
+  animation: dentalFloat1 9s ease-in-out infinite;
+}
+@keyframes dentalFloat1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-14px) rotate(3deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+  75% { transform: translateY(-12px) rotate(1deg); }
+}
+
+.hero-dental-float-2 {
+  animation: dentalFloat2 11s ease-in-out infinite;
+}
+@keyframes dentalFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-10px) rotate(-4deg); }
+  60% { transform: translateY(-16px) rotate(2deg); }
+  80% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+.hero-dental-float-3 {
+  animation: dentalFloat3 8s ease-in-out infinite;
+}
+@keyframes dentalFloat3 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(-12px) rotate(5deg); }
+  70% { transform: translateY(-6px) rotate(-3deg); }
+}
+
+.hero-dental-float-4 {
+  animation: dentalFloat4 7s ease-in-out infinite;
+}
+@keyframes dentalFloat4 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+
+/* Torch beam pulse */
+.hero-torch-beam {
+  animation: torchPulse 2s ease-in-out infinite;
+}
+@keyframes torchPulse {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.12; }
+}
+
+/* Torch sparkles twinkle */
+.hero-torch-sparkle {
+  animation: torchSparkle 1.5s ease-in-out infinite;
+}
+@keyframes torchSparkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+/* ================================================================== */
+/*  Sparkle Particles — Twinkle/shimmer effect                         */
+/* ================================================================== */
+.hero-sparkle {
+  pointer-events: none;
+}
+
+.hero-sparkle-1 { animation: sparkleTwinkle 3s ease-in-out infinite; }
+.hero-sparkle-2 { animation: sparkleTwinkle 4s ease-in-out 0.5s infinite; }
+.hero-sparkle-3 { animation: sparkleTwinkle 3.5s ease-in-out 1s infinite; }
+.hero-sparkle-4 { animation: sparkleTwinkle 5s ease-in-out 1.5s infinite; }
+.hero-sparkle-5 { animation: sparkleTwinkle 3s ease-in-out 2s infinite; }
+.hero-sparkle-6 { animation: sparkleTwinkle 4.5s ease-in-out 0.8s infinite; }
+.hero-sparkle-7 { animation: sparkleTwinkle 3.2s ease-in-out 1.2s infinite; }
+.hero-sparkle-8 { animation: sparkleTwinkle 2.8s ease-in-out 2.5s infinite; }
+
+@keyframes sparkleTwinkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  25% { opacity: 0.3; transform: scale(0.6) rotate(15deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(-5deg); }
+  75% { opacity: 0.5; transform: scale(0.8) rotate(10deg); }
+}
+
+/* ================================================================== */
+/*  CTA Button — Teal gradient                                         */
+/* ================================================================== */
+.btn-cta {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1B7A6E, #2DA89E, #6BCDB8);
+  background-size: 200% auto;
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.btn-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s;
+}
+/* Shine sweep on hover — 2026 modern micro-interaction */
+.btn-cta::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transition: none; transform: skewX(-20deg);
+}
+.btn-cta:hover::after {
+  animation: btnShine 0.7s ease forwards;
+}
+@keyframes btnShine {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+.btn-cta:hover::before { opacity: 1; }
+.btn-cta:hover {
+  transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px rgba(27, 122, 110, 0.35);
+  background-position: right center;
+}
+
+
+/* ================================================================== */
+/*  Service Card — Teal border gradient on hover                       */
+/* ================================================================== */
+.service-card {
+  position: relative; background: white; border-radius: 1.25rem; overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 4px 24px rgba(27, 122, 110, 0.06), 0 1px 6px rgba(0, 0, 0, 0.03);
+}
+.service-card::before {
+  content:''; position:absolute; inset:0; padding:2px; border-radius:1.25rem;
+  background:linear-gradient(135deg,transparent,transparent);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  transition:background .5s; pointer-events:none;
+}
+.service-card:hover::before { background: linear-gradient(135deg, #1B7A6E, #2DA89E, #16635A); }
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(27, 122, 110, 0.14), 0 8px 20px rgba(27, 122, 110, 0.08); }
+.service-card:hover .svc-icon { transform: scale(1.1) rotate(-5deg); }
+.svc-icon { transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+.service-card:hover .svc-arrow { transform: translateX(4px); opacity: 1; }
+.svc-arrow { transform: translateX(-4px); opacity: 0; transition: all 0.3s; }
+:root[dir="rtl"] .service-card:hover .svc-arrow { transform: translateX(-4px); }
+:root[dir="rtl"] .svc-arrow { transform: translateX(4px); }
+
+/* On touch/small screens, show svc-arrow by default since there's no hover */
+@media (max-width: 639px) {
+  .svc-arrow { opacity: 0.6 !important; transform: none !important; }
+}
+
+/* ================================================================== */
+/*  Process Card — Teal accents                                        */
+/* ================================================================== */
+.process-card { transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+.process-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(27, 122, 110, 0.16), 0 6px 16px rgba(27, 122, 110, 0.08); }
+.process-card:hover .proc-num { transform: scale(1.15) rotate(6deg); }
+.proc-num { transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+
+/* ================================================================== */
+/*  Gallery Card — Luxurious hover-to-reveal transformation            */
+/* ================================================================== */
+.gallery-card {
+  position: relative;
+  cursor: pointer; user-select: none; -webkit-user-select: none;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Image container */
+.gallery-card__images {
+  position: relative; overflow: hidden; border-radius: 1.25rem;
+  aspect-ratio: 4/5;
+  box-shadow:
+    0 4px 6px rgba(0,0,0,0.04),
+    0 12px 24px rgba(0,0,0,0.06),
+    0 24px 48px rgba(0,0,0,0.04);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.gallery-card:hover .gallery-card__images {
+  box-shadow:
+    0 8px 12px rgba(0,0,0,0.06),
+    0 20px 40px rgba(0,0,0,0.10),
+    0 32px 64px rgba(0,0,0,0.06);
+  border-radius: 1.5rem;
+}
+
+/* Images */
+.gallery-card__img {
+  display: block; pointer-events: none;
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-card__img--after { z-index: 1; transform: scale(1.08); }
+.gallery-card__img--before { z-index: 2; }
+.gallery-card:hover .gallery-card__img--before { opacity: 0; }
+.gallery-card:hover .gallery-card__img--after { transform: scale(1); }
+
+/* Corner decorations */
+.gallery-card__corner {
+  position: absolute; z-index: 4; pointer-events: none;
+  width: 28px; height: 28px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 0.5;
+}
+.gallery-card__corner--tl {
+  top: 12px; start: 12px;
+  border-top: 2px solid rgba(255,255,255,0.8);
+  border-inline-start: 2px solid rgba(255,255,255,0.8);
+  border-start-start-radius: 6px;
+}
+.gallery-card__corner--br {
+  bottom: 12px; end: 12px;
+  border-bottom: 2px solid rgba(255,255,255,0.8);
+  border-inline-end: 2px solid rgba(255,255,255,0.8);
+  border-end-end-radius: 6px;
+}
+.gallery-card:hover .gallery-card__corner { opacity: 0; transform: scale(0.8); }
+
+/* Before/After badges */
+.gallery-card__badge {
+  position: absolute; top: 14px; z-index: 6;
+  padding: 5px 12px; border-radius: 10px;
+  font-size: 10px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gallery-card__badge--before {
+  start: 14px;
+  background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.gallery-card__badge--after {
+  start: 14px;
+  background: rgba(20,170,150,0.65); color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.gallery-card:hover .gallery-card__badge--before { opacity: 0 !important; transform: translateY(-4px); }
+.gallery-card:hover .gallery-card__badge--after { opacity: 1 !important; transform: translateY(0); }
+.gallery-card__badge--after { transform: translateY(4px); }
+
+/* Card info section — below image */
+.gallery-card__info {
+  padding: 16px 4px 4px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-card:hover .gallery-card__info { transform: translateY(-2px); }
+.gallery-card__info-label {
+  font-weight: 700; font-size: 15px; color: #1A2332;
+  letter-spacing: -0.01em;
+}
+.gallery-card__info-sublabel {
+  font-size: 13px; color: #14AA96; margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Gallery card badges: disable uppercase/spacing for RTL cursive */
+:root[dir="rtl"] .gallery-card__badge {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ================================================================== */
+/*  Testimonial Glass — Cream/teal backgrounds                         */
+/* ================================================================== */
+.testi-glass {
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+  border: 1px solid rgba(27, 122, 110, 0.12); transition: all 0.4s;
+  box-shadow: 0 4px 20px rgba(27, 122, 110, 0.06), 0 1px 6px rgba(0, 0, 0, 0.02);
+}
+.testi-glass:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(27, 122, 110, 0.25);
+  box-shadow: 0 8px 32px rgba(27, 122, 110, 0.10), 0 2px 8px rgba(27, 122, 110, 0.05);
+}
+
+/* ================================================================== */
+/*  Booking Card — Teal glow on dark background                         */
+/* ================================================================== */
+.booking-card { position: relative; border-radius: 1.5rem; overflow: visible; }
+.booking-card::before {
+  content:''; position:absolute; inset:-3px; z-index:-1; border-radius:1.6rem;
+  background:linear-gradient(135deg, #1B7A6E, #2DA89E, #6BCDB8, #1B7A6E);
+  opacity: 0.8;
+}
+.booking-card::after {
+  content:''; position:absolute; inset:-16px; z-index:-2; border-radius:2rem;
+  background:linear-gradient(135deg, rgba(27,122,110,0.15), rgba(107,205,184,0.08), rgba(27,122,110,0.12));
+  filter: blur(20px);
+}
+.booking-form-card {
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.20),
+    0 8px 24px rgba(27, 122, 110, 0.10),
+    0 0 48px rgba(27, 122, 110, 0.06);
+}
+
+/* ================================================================== */
+/*  Booking DatePicker Input — RTL-aware padding for calendar icon     */
+/* ================================================================== */
+.booking-date-input {
+  width: 100% !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-inline-start: 2.75rem !important;
+  padding-inline-end: 1rem !important;
+  border-radius: 0.75rem !important;
+  border: 2px solid rgba(27,122,110,0.15) !important;
+  background: #FFFEFA !important;
+  font-size: 0.875rem !important;
+  color: #111827 !important;
+  outline: none !important;
+  transition: all 0.3s !important;
+  box-sizing: border-box !important;
+}
+.booking-date-input:focus {
+  border-color: #1B7A6E !important;
+  box-shadow: 0 0 0 4px rgba(27,122,110,0.08) !important;
+  background: #fff !important;
+}
+.booking-date-input:hover:not(:focus) {
+  border-color: rgba(27,122,110,0.30) !important;
+}
+
+/* ================================================================== */
+/*  Booking DatePicker Calendar — RTL-friendly with Persian weekdays   */
+/* ================================================================== */
+.booking-datepicker {
+  width: 280px !important;
+}
+.booking-datepicker .rmdp-wrapper {
+  width: 100% !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 4px 16px rgba(27,122,110,0.06) !important;
+  border: 1px solid rgba(27,122,110,0.08) !important;
+  overflow: hidden;
+}
+.booking-datepicker .rmdp-calendar {
+  width: 100% !important;
+  padding: 8px !important;
+}
+.booking-datepicker .rmdp-header {
+  padding: 2px 0 6px !important;
+  justify-content: center !important;
+}
+.booking-datepicker .rmdp-header-values {
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: #0D3A35 !important;
+  text-align: center !important;
+}
+/* Hide navigation arrows — month navigation is disabled */
+.booking-datepicker .rmdp-arrow-container {
+  display: none !important;
+}
+
+/* Week day headers — proper Persian abbreviations */
+.booking-datepicker .rmdp-week-day {
+  font-size: 11px !important;
+  text-align: center !important;
+  color: #1B7A6E !important;
+  font-weight: 700 !important;
+  padding: 4px 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Day cells — clean grid with no overlap */
+.booking-datepicker .rmdp-day {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.booking-datepicker .rmdp-day span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Today highlight */
+.booking-datepicker .rmdp-day.rmdp-today span {
+  background-color: rgba(27,122,110,0.08) !important;
+  color: #1B7A6E !important;
+  font-weight: 700 !important;
+}
+
+/* Selected day */
+.booking-datepicker .rmdp-day.rmdp-selected span:not(.highlight) {
+  background-color: #1B7A6E !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(27,122,110,0.30) !important;
+}
+
+/* Hover on available days */
+.booking-datepicker .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+  background-color: rgba(27,122,110,0.12) !important;
+  color: #1B7A6E !important;
+}
+
+/* Disabled days */
+.booking-datepicker .rmdp-day.rmdp-disabled span {
+  color: #d1d5db !important;
+}
+
+/* ================================================================== */
+/*  Floating Label Form — Teal accent                                  */
+/* ================================================================== */
+.float-group { position: relative; }
+.float-group label {
+  position:absolute; inset-inline-start:44px; top:50%; transform:translateY(-50%); font-size:14px;
+  color:#9CA3AF; pointer-events:none; transition:all .25s cubic-bezier(.22,1,.36,1);
+  background:transparent; padding:0 4px;
+}
+.float-group textarea ~ label { top:20px; transform:none; }
+.float-group input:focus ~ label, .float-group input:not(:placeholder-shown) ~ label,
+.float-group select ~ label,
+.float-group textarea:focus ~ label, .float-group textarea:not(:placeholder-shown) ~ label {
+  top:-1px; inset-inline-start:12px; transform:none; font-size:11px; font-weight:600; color:#1B7A6E; background:white;
+}
+
+/* ================================================================== */
+/*  Form Input — Teal focus color                                      */
+/* ================================================================== */
+.form-input { transition: all 0.3s; border: 2px solid rgba(27, 122, 110, 0.15); background: #FAFCFB; }
+.form-input:focus { border-color: #1B7A6E; box-shadow: 0 0 0 4px rgba(27, 122, 110, 0.08); outline: none; background: white; }
+.form-input:hover:not(:focus) { border-color: rgba(27, 122, 110, 0.30); }
+
+/* ================================================================== */
+/*  Time Slot — Teal selection                                         */
+/* ================================================================== */
+.time-slot {
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1); cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.time-slot::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,#1B7A6E,#2DA89E); opacity:0; transition:opacity .25s;
+}
+.time-slot.selected::before { opacity:1; }
+.time-slot.selected { border-color:transparent; color:white; transform:scale(1.02); box-shadow:0 4px 16px rgba(27,122,110,0.30); }
+.time-slot span { position:relative; z-index:1; }
+.time-slot:hover:not(.selected) { border-color:#1B7A6E; color:#1B7A6E; transform:translateY(-2px); }
+
+/* ================================================================== */
+/*  Step Panel — Animation with teal                                   */
+/* ================================================================== */
+.step-panel { animation: stepIn 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes stepIn { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+:root[dir="rtl"] .step-panel { animation: stepInRTL 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes stepInRTL { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+
+/* ================================================================== */
+/*  Toast — Teal accent                                                */
+/* ================================================================== */
+.toast { animation: toastIn 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.toast-exit { animation: toastOut 0.3s ease both; }
+@keyframes toastIn { from{opacity:0;transform:translateX(60px) scale(.9)} to{opacity:1;transform:translateX(0) scale(1)} }
+@keyframes toastOut { to{opacity:0;transform:translateX(60px) scale(.9)} }
+:root[dir="rtl"] .toast { animation: toastInRTL 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+:root[dir="rtl"] .toast-exit { animation: toastOutRTL 0.3s ease both; }
+@keyframes toastInRTL { from{opacity:0;transform:translateX(-60px) scale(.9)} to{opacity:1;transform:translateX(0) scale(1)} }
+@keyframes toastOutRTL { to{opacity:0;transform:translateX(-60px) scale(.9)} }
+
+/* Toast color overrides — error: charcoal, success: teal */
+.toast-error { background: #1A2332 !important; color: #FAFCFB !important; border: 1px solid rgba(27, 122, 110, 0.20) !important; }
+.toast-success { background: #1B7A6E !important; color: #FFFFFF !important; border: 1px solid rgba(45, 168, 158, 0.30) !important; }
+
+/* ================================================================== */
+/*  Mobile Sticky CTA — Teal theme                                     */
+/* ================================================================== */
+.mobile-sticky-cta { transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.mobile-sticky-cta.show { transform: translateY(0); }
+
+/* ================================================================== */
+/*  Header — Single-Bar Premium 2026                                    */
+/*  Frosted glass + gold-teal luxury, grid-centered                    */
+/* ================================================================== */
+
+/* ── Header container ── */
+#header {
+  direction: rtl;
+  transition:
+    background 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#header.header-at-top {
+  background: rgba(250, 252, 251, 0.70);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(27, 122, 110, 0.05);
+}
+
+#header.header-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(27, 122, 110, 0.08);
+  box-shadow:
+    0 8px 40px rgba(27, 122, 110, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* ── Desktop bar ── */
+.hdr-desktop-bar {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Logo — clean white rounded frame ── */
+.hdr-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(27, 122, 110, 0.06);
+  box-shadow:
+    0 2px 8px rgba(27, 122, 110, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.60) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.hdr-logo-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.06), transparent);
+  transition: left 0.7s ease;
+}
+.hdr-logo-frame:hover::before { left: 140%; }
+.hdr-logo-frame:hover {
+  box-shadow:
+    0 4px 16px rgba(197, 160, 89, 0.06),
+    0 2px 8px rgba(27, 122, 110, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.70) inset;
+  transform: translateY(-1px);
+}
+
+/* ── Navigation Links ── */
+.hdr-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-luxury-link {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(13, 58, 53, 0.55);
+  padding: 8px 18px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-luxury-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  inset-inline-start: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #1B7A6E, #2DA89E);
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(27, 122, 110, 0.30);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+:root[dir="rtl"] .nav-luxury-link::after { transform: translateX(50%); }
+.nav-luxury-link:hover {
+  color: rgba(13, 58, 53, 0.90);
+  background: rgba(27, 122, 110, 0.04);
+}
+.nav-luxury-link:hover::after {
+  width: 50%;
+}
+
+/* ── Phone link ── */
+.hdr-phone-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(13, 58, 53, 0.45);
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+.hdr-phone-link:hover {
+  color: rgba(13, 58, 53, 0.75);
+}
+
+/* ── Language Switcher ── */
+.hdr-lang button {
+  font-size: 13px !important;
+  padding: 5px 10px !important;
+  border-radius: 8px !important;
+  min-height: 32px !important;
+  color: rgba(13, 58, 53, 0.45) !important;
+  background: transparent !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  gap: 4px !important;
+  font-weight: 500 !important;
+}
+.hdr-lang button:hover {
+  color: rgba(13, 58, 53, 0.75) !important;
+  background: rgba(27, 122, 110, 0.06) !important;
+}
+.hdr-lang button svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* ── CTA Button — Pill-shaped deep teal ── */
+.hdr-cta-pill {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  padding: 0 30px;
+  height: 50px;
+  background: linear-gradient(135deg, #0D3A35, #1B7A6E, #16635A);
+  background-size: 200% auto;
+  box-shadow:
+    0 6px 24px rgba(13, 58, 53, 0.22),
+    0 2px 6px rgba(27, 122, 110, 0.10);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hdr-cta-pill::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(27, 122, 110, 0.30), rgba(107, 205, 184, 0.15));
+  opacity: 0;
+  filter: blur(10px);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+.hdr-cta-pill:hover::before { opacity: 1; }
+.hdr-cta-pill:hover {
+  background-position: right center;
+  box-shadow:
+    0 10px 36px rgba(13, 58, 53, 0.28),
+    0 4px 10px rgba(27, 122, 110, 0.15),
+    0 0 24px rgba(27, 122, 110, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Mobile ── */
+.hdr-cta-mobile {
+  border-radius: 12px !important;
+  height: 42px !important;
+  box-shadow: 0 4px 16px rgba(13, 58, 53, 0.20) !important;
+}
+
+.hdr-hamburger:hover {
+  background: rgba(27, 122, 110, 0.06);
+}
+.hdr-hamburger:active {
+  background: rgba(27, 122, 110, 0.10);
+}
+
+/* ================================================================== */
+/*  Service Cards — Glass on Dark Background                            */
+/* ================================================================== */
+.svc-glass-card {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.10);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.svc-glass-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.25),
+    0 6px 16px rgba(27, 122, 110, 0.08),
+    0 0 24px rgba(27, 122, 110, 0.04);
+}
+.svc-new-card .svc-new-icon {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* RTL card adjustments */
+:root[dir="rtl"] .svc-new-card {
+  text-align: right;
+}
+
+/* ================================================================== */
+/*  Pulse Dot — Teal                                                   */
+/* ================================================================== */
+.pulse-dot { position: relative; }
+.pulse-dot::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%; border:2px solid #1B7A6E;
+  animation: pulseDot 2s ease-out infinite;
+}
+@keyframes pulseDot { 0%{transform:scale(.8);opacity:.8} 100%{transform:scale(2);opacity:0} }
+
+/* ================================================================== */
+/*  Process Connector — Teal gradient                                  */
+/* ================================================================== */
+.proc-connector { position: relative; }
+.proc-connector::after {
+  content:''; position:absolute; top:50%; inset-inline-start:100%; width:100%; height:2px;
+  background:linear-gradient(90deg,#1B7A6E,transparent); z-index:0;
+}
+:root[dir="rtl"] .proc-connector::after { background:linear-gradient(270deg,#1B7A6E,transparent); }
+.proc-connector:last-child::after { display: none; }
+@media (max-width:767px) { .proc-connector::after { display:none; } }
+
+/* ================================================================== */
+/*  Process Timeline — Animated glow + Pulse rings                     */
+/* ================================================================== */
+@keyframes timelineGlow {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(calc(100% - 6rem)); opacity: 0; }
+}
+.animate-timeline-glow {
+  animation: timelineGlow 4s ease-in-out infinite;
+}
+@keyframes pingSlow {
+  0% { transform: scale(1); opacity: 0.3; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.animate-ping-slow {
+  animation: pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  border-radius: inherit;
+}
+@keyframes pingSlower {
+  0% { transform: scale(1); opacity: 0.15; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.animate-ping-slower {
+  animation: pingSlower 3.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  border-radius: inherit;
+}
+
+/* ================================================================== */
+/*  Char Reveal                                                        */
+/* ================================================================== */
+@keyframes charIn { from { opacity:0; transform:translateY(50px) rotateX(-30deg); } to { opacity:1; transform:translateY(0) rotateX(0); } }
+
+/* Scroll-down bounce indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.scroll-bounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ================================================================== */
+/*  Premium 2026 Design Enhancements                                    */
+/* ================================================================== */
+
+/* 1. Glassmorphism Badge — Enhanced glass effect for floating badges   */
+.glass-badge {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 32px rgba(27, 122, 110, 0.12),
+    0 2px 8px rgba(27, 122, 110, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(27, 122, 110, 0.05);
+}
+
+/* 2. Layered Shadows — Multi-layer teal-tinted for depth               */
+.shadow-layered {
+  box-shadow:
+    0 2px 4px rgba(27, 122, 110, 0.03),
+    0 8px 24px rgba(27, 122, 110, 0.06),
+    0 24px 64px rgba(27, 122, 110, 0.09);
+}
+
+/* 3. Floating Gentle — Sinusoidal micro-animation for badges           */
+.float-gentle {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(0.5deg); }
+  50% { transform: translateY(-3px) rotate(-0.3deg); }
+  75% { transform: translateY(-8px) rotate(0.2deg); }
+}
+.float-gentle-alt {
+  animation: floatGentleAlt 7s ease-in-out infinite;
+}
+@keyframes floatGentleAlt {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  30% { transform: translateY(-8px) rotate(-0.4deg); }
+  60% { transform: translateY(-4px) rotate(0.3deg); }
+  80% { transform: translateY(-6px) rotate(-0.2deg); }
+}
+
+/* 4. Hero Image Frame — Elegant soft-edge mask with custom border      */
+.hero-image-frame {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.hero-image-frame::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(27,122,110,0.25), rgba(45,168,158,0.10), rgba(107,205,184,0.15)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* Soft vignette overlay for color-grading effect */
+.hero-image-frame::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  border-radius: 2rem;
+  background:
+    linear-gradient(to top, rgba(27,122,110,0.12) 0%, transparent 35%),
+    linear-gradient(to bottom, rgba(240,247,245,0.08) 0%, transparent 20%),
+    radial-gradient(ellipse at 30% 20%, rgba(27,122,110,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* 5. Spotlight Glow — Subtle radial glow near CTAs                    */
+.spotlight-glow {
+  position: relative;
+}
+.spotlight-glow::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%; transform: translateX(-50%);
+  width: 200px; height: 80px;
+  background: radial-gradient(ellipse, rgba(27,122,110,0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 6. Abstract Organic Curves — SVG background decoration               */
+.organic-curve {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 7. Heading Gradient — Navy-to-dark-teal text gradient (2026 style)   */
+.heading-gradient {
+  background: linear-gradient(135deg, #1A2332 0%, #0D3A35 40%, #1B7A6E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.heading-gradient-rtl {
+  background: linear-gradient(225deg, #1A2332 0%, #0D3A35 40%, #1B7A6E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 8. Service Card — Enhanced layered shadow on hover                   */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 4px 12px rgba(27, 122, 110, 0.04),
+    0 16px 40px rgba(27, 122, 110, 0.10),
+    0 32px 72px rgba(27, 122, 110, 0.06);
+}
+
+/* 9. Team Card — Layered shadow on hover                               */
+.team-card-shadow:hover {
+  box-shadow:
+    0 4px 12px rgba(27, 122, 110, 0.04),
+    0 16px 40px rgba(27, 122, 110, 0.08),
+    0 32px 64px rgba(27, 122, 110, 0.04);
+}
+
+/* ================================================================== */
+/*  Language Switch Transition                                         */
+/* ================================================================== */
+html[data-i18n-transitioning] body {
+  opacity: 0.97;
+  transition: opacity 0.08s ease;
+}
+html:not([data-i18n-transitioning]) body {
+  transition: opacity 0.15s ease;
+}
+
+/* ================================================================== */
+/*  RTL Mobile Overflow Protection                                     */
+/* ================================================================== */
+html[dir="rtl"] body {
+  overflow-x: hidden;
+}
+html[dir="rtl"] .max-w-7xl {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ================================================================== */
+/*  RTL Text Handling on Mobile                                        */
+/* ================================================================== */
+@media (max-width: 640px) {
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] p,
+  html[dir="rtl"] span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  html[dir="rtl"] .grid {
+    min-width: 0;
+  }
+}
+
+/* ================================================================== */
+/*  RTL Font Transition                                                */
+/* ================================================================== */
+html {
+  transition: scrollbar-color 0.3s ease;
+}
+body {
+  transition: font-family 0.15s ease, opacity 0.15s ease;
+}
+
+/* ================================================================== */
+/*  Gallery Card Mobile                                                */
+/* ================================================================== */
+@media (max-width: 640px) {
+  .gallery-card__images {
+    border-radius: 1rem;
+  }
+  .gallery-card__badge {
+    font-size: 9px; padding: 4px 10px;
+  }
+  .gallery-card__corner { width: 20px; height: 20px; }
+  .gallery-card__info { padding: 12px 2px 2px; }
+  .gallery-card__info-label { font-size: 14px; }
+  .gallery-card__info-sublabel { font-size: 12px; }
+}
+
+/* ================================================================== */
+/*  Mobile Sticky CTA Safe Area                                        */
+/* ================================================================== */
+.mobile-sticky-cta.show {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ================================================================== */
+/*  Emergency Badge — Teal tinted                                      */
+/* ================================================================== */
+.emergency-badge {
+  background: rgba(27, 122, 110, 0.08);
+  border: 1px solid rgba(27, 122, 110, 0.20);
+  color: #1B7A6E;
+}
+
+/* ================================================================== */
+/*  Footer Accent Line — Teal                                          */
+/* ================================================================== */
+.footer-accent-line {
+  background: linear-gradient(90deg, transparent, #1B7A6E, #2DA89E, #1B7A6E, transparent);
+}
+
+/* ================================================================== */
+/*  Footer Social Icons — Teal hover                                   */
+/* ================================================================== */
+.footer-social-icon {
+  transition: all 0.3s ease;
+}
+.footer-social-icon:hover {
+  color: #1B7A6E;
+  border-color: rgba(27, 122, 110, 0.30);
+  box-shadow: 0 4px 16px rgba(27, 122, 110, 0.15);
+}
+
+/* ================================================================== */
+/*  RTL Footer — No sizing overrides needed                            */
+/* ================================================================== */
+
+/* ================================================================== */
+/*  Footer Logo — invert for dark bg                                   */
+/* ================================================================== */
+footer img.brightness-0 {
+  filter: brightness(0) invert(1);
+}
+
+/* ================================================================== */
+/*  RTL Booking Card — Same size as LTR, only direction fixes         */
+/* ================================================================== */
+
+/* Time slot: wider padding for RTL numerals */
+:root[dir="rtl"] .time-slot {
+  padding-inline: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ================================================================== */
+/*  Date Picker — react-multi-date-picker custom teal theme            */
+/* ================================================================== */
+.rmdp-wrapper {
+  width: 100%;
+}
+.rmdp-container {
+  width: 100%;
+}
+.rmdp-wrapper .rmdp-calendar {
+  font-family: inherit;
+  border-radius: 0.875rem;
+  box-shadow: 0 8px 30px rgba(27, 122, 110, 0.10), 0 2px 8px rgba(0,0,0,0.03);
+  border: 1px solid rgba(27, 122, 110, 0.10);
+  background: #FAFCFB;
+  padding: 8px;
+}
+.rmdp-wrapper .rmdp-header {
+  padding: 4px 8px 6px;
+}
+.rmdp-wrapper .rmdp-day,
+.rmdp-wrapper .rmdp-week-day {
+  color: #1A2332;
+  font-size: 12px;
+}
+.rmdp-wrapper .rmdp-day:not(.rmdp-deactive):hover {
+  background: rgba(27, 122, 110, 0.10);
+  border-radius: 8px;
+}
+.rmdp-wrapper .rmdp-day.rmdp-selected span {
+  background: linear-gradient(135deg, #1B7A6E, #2DA89E) !important;
+  color: white !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(27, 122, 110, 0.30);
+}
+.rmdp-wrapper .rmdp-day.rmdp-today span {
+  border-color: #1B7A6E !important;
+  color: #1B7A6E !important;
+}
+.rmdp-wrapper .rmdp-day.rmdp-deactive {
+  color: #ccc;
+}
+/* Hide arrows globally — month navigation is disabled */
+.rmdp-wrapper .rmdp-arrow-container {
+  display: none !important;
+}
+.rmdp-wrapper .rmdp-header {
+  justify-content: center !important;
+}
+.rmdp-wrapper .rmdp-header-values {
+  color: #1A2332;
+  font-weight: 700;
+  text-align: center !important;
+}
+
+/* Booked time slot styling */
+.time-slot-booked {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.time-slot-booked:hover {
+  transform: none !important;
+  border-color: #e5e7eb !important;
+  color: #9ca3af !important;
+}
+
+
