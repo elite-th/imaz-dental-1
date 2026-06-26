@@ -793,46 +793,6 @@ async function seedCollaborations() {
       sortOrder: 1,
       isActive: true,
     },
-    {
-      nameFa: "شرکت ایمپلنت استرا",
-      nameEn: "Astra Implant Co.",
-      nameAr: "شركة أسترا لزراعة الأسنان",
-      image: "/uploads/collaborations/collab-implant.png",
-      sortOrder: 2,
-      isActive: true,
-    },
-    {
-      nameFa: "داروسازی عبیدی",
-      nameEn: "Abidi Pharmaceutical",
-      nameAr: "أبيدي للصيدلة",
-      image: "/uploads/collaborations/collab-pharma.png",
-      sortOrder: 3,
-      isActive: true,
-    },
-    {
-      nameFa: "تأمین تجهیزات دندانپزشکی",
-      nameEn: "Dental Supply Co.",
-      nameAr: "شركة تجهيزات طب الأسنان",
-      image: "/uploads/collaborations/collab-dental-supply.png",
-      sortOrder: 4,
-      isActive: true,
-    },
-    {
-      nameFa: "دانشگاه علوم پزشکی قم",
-      nameEn: "Qom University of Medical Sciences",
-      nameAr: "جامعة قم للعلوم الطبية",
-      image: "/uploads/collaborations/collab-university.png",
-      sortOrder: 5,
-      isActive: true,
-    },
-    {
-      nameFa: "فناوری پزشکی مدرن",
-      nameEn: "Modern MedTech",
-      nameAr: "تكنولوجيا طبية حديثة",
-      image: "/uploads/collaborations/collab-medtech.png",
-      sortOrder: 6,
-      isActive: true,
-    },
   ];
 
   // Clear existing collaborations

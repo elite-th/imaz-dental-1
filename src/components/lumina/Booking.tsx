@@ -377,17 +377,17 @@ export default function Booking() {
   /* ---- progress bar step colors ---- */
   const dotClass = (step: number) => {
     if (step <= currentStep)
-      return "w-9 h-9 rounded-full bg-teal-500 text-white flex items-center justify-center text-xs font-bold shadow-md shadow-teal-500/30 transition-all duration-500";
-    return "w-9 h-9 rounded-full bg-teal-100 text-teal-300 flex items-center justify-center text-xs font-bold transition-all duration-500";
+      return "w-9 h-9 rounded-full bg-sky-500 text-white flex items-center justify-center text-xs font-bold shadow-md shadow-sky-500/30 transition-all duration-500";
+    return "w-9 h-9 rounded-full bg-sky-100 text-sky-400 flex items-center justify-center text-xs font-bold transition-all duration-500";
   };
   const labelClass = (step: number) =>
     step <= currentStep
-      ? "text-[11px] font-semibold text-teal-600 hidden sm:block"
-      : "text-[11px] font-medium text-teal-300 hidden sm:block";
+      ? "text-[11px] font-semibold text-sky-600 hidden sm:block"
+      : "text-[11px] font-medium text-sky-400 hidden sm:block";
   const lineClass = (step: number) =>
     step < currentStep
-      ? "w-16 sm:w-24 h-[2px] bg-teal-500 mx-2 transition-colors duration-500"
-      : "w-16 sm:w-24 h-[2px] bg-teal-200 mx-2 transition-colors duration-500";
+      ? "w-16 sm:w-24 h-[2px] bg-sky-500 mx-2 transition-colors duration-500"
+      : "w-16 sm:w-24 h-[2px] bg-sky-200 mx-2 transition-colors duration-500";
 
   /* ---- slot status icon ---- */
   const SlotStatusIcon = ({ status }: { status: TimeSlot["status"] }) => {

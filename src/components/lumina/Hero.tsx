@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { CalendarCheck, ChevronDown, Shield } from "lucide-react";
+import { CalendarCheck, ChevronDown, Shield, Users } from "lucide-react";
 import { useStatCounter, scrollToElement } from "@/hooks/use-lumina";
 import { useI18n } from "@/i18n/context";
 
@@ -23,8 +23,13 @@ function StatCounter({
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
-  const { t, dir } = useI18n();
+  const { t, dir, locale } = useI18n();
   const isRTL = dir === "rtl";
+
+  // Locale-aware formatted patient count (8,000 in fa/en/ar numerals)
+  const patientCount = new Intl.NumberFormat(
+    locale === "fa" ? "fa-IR" : locale === "ar" ? "ar-EG" : "en-US"
+  ).format(8000);
 
   /* ── Parallax on hero image ── */
   useEffect(() => {
@@ -381,7 +386,7 @@ export default function Hero() {
                 </button>
               <button
                 onClick={() => scrollToElement("#services")}
-                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl border-2 border-teal-500/30 text-teal-600/70 font-medium text-[15px] hover:bg-teal-500/5 hover:border-teal-500/50 hover:scale-[1.02] transition-all w-full sm:w-auto justify-center group"
+                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl border-2 border-sky-500/30 text-sky-600/80 font-medium text-[15px] hover:bg-sky-500/5 hover:border-sky-500/50 hover:scale-[1.02] transition-all w-full sm:w-auto justify-center group"
               >
                 {t("hero.cta_explore")}{" "}
                 <ChevronDown className="w-3 h-3 group-hover:translate-y-1 transition-transform" />
@@ -397,16 +402,16 @@ export default function Hero() {
                 <div className="text-2xl sm:text-3xl font-bold text-[#1A2332]">
                   <StatCounter target={10} />+
                 </div>
-                <div className="text-[11px] text-teal-600/70 font-semibold mt-0.5">
+                <div className="text-[11px] text-sky-600/80 font-semibold mt-0.5">
                   {t("hero.stat_years")}
                 </div>
               </div>
-              <div className="w-px h-10 bg-gradient-to-b from-transparent via-teal-500/30 to-transparent" />
+              <div className="w-px h-10 bg-gradient-to-b from-transparent via-sky-500/30 to-transparent" />
               <div className="text-center lg:text-start">
                 <div className="text-2xl sm:text-3xl font-bold text-[#1A2332]">
                   <StatCounter target={8000} />+
                 </div>
-                <div className="text-[11px] text-teal-600/70 font-semibold mt-0.5">
+                <div className="text-[11px] text-sky-600/80 font-semibold mt-0.5">
                   {t("hero.stat_patients")}
                 </div>
               </div>
@@ -450,44 +455,28 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating Badge: Trusted — Glassmorphism + Floating alt animation */}
+              {/* Floating Badge: Trusted — Icon-based (8000+ happy patients) */}
               <div
-                className="glass-badge float-gentle-alt absolute -bottom-5 -start-5 rounded-2xl p-4 z-10"
+                className="glass-badge float-gentle-alt absolute -bottom-5 -start-5 rounded-2xl p-3 z-10"
                 data-hero-anim="1.6s"
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2.5 rtl:space-x-reverse">
-                    <img
-                      src="/images/avatar-p1.png"
-                      alt=""
-                      className="w-9 h-9 rounded-full border-2 object-cover"
-                      style={{ borderColor: "var(--teal-500)" }}
-                    />
-                    <img
-                      src="/images/avatar-p2.png"
-                      alt=""
-                      className="w-9 h-9 rounded-full border-2 object-cover"
-                      style={{ borderColor: "var(--teal-500)" }}
-                    />
-                    <img
-                      src="/images/avatar-p3.png"
-                      alt=""
-                      className="w-9 h-9 rounded-full border-2 object-cover"
-                      style={{ borderColor: "var(--teal-500)" }}
-                    />
-                    <div
-                      className="w-9 h-9 rounded-full border-2 bg-teal-500/10 text-teal-600 flex items-center justify-center text-[10px] font-bold"
-                      style={{ borderColor: "var(--teal-500)" }}
-                    >
-                      +1K
+                <div className="flex items-center gap-2.5">
+                  {/* Icon: Users (many patients) */}
+                  <div className="shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-sky-700 shadow-lg shadow-sky-500/30 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-[#1A2332]">
-                      {t("hero.badge_trusted")}
+                    {/* Patient count (locale-aware numerals) + "patients" word */}
+                    <div className="text-sm font-bold text-[#1A2332] flex items-baseline gap-1 leading-tight">
+                      <span className="tabular-nums">{patientCount}+</span>
+                      <span className="text-[11px] font-semibold text-[#1A2332]/60">
+                        {t("hero.badge_trusted_unit")}
+                      </span>
                     </div>
-                    <div className="text-[11px] text-[#1A2332]/40">
-                      {t("hero.badge_trusted_sub")}
+                    <div className="text-[11px] text-[#1A2332]/40 leading-tight">
+                      {t("hero.badge_trusted")}
                     </div>
                   </div>
                 </div>

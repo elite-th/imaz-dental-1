@@ -53,6 +53,17 @@
   --color-teal-700: #114E47;
   --color-teal-800: #0D3A35;
   --color-teal-900: #092824;
+  /* Dental Blue palette — light, fresh, medical (sky blue) for buttons & primary accents */
+  --color-dblue-50: #EFF8FF;
+  --color-dblue-100: #DBEEFE;
+  --color-dblue-200: #BAE0FD;
+  --color-dblue-300: #7DCFFC;
+  --color-dblue-400: #38BDF8;
+  --color-dblue-500: #0EA5E9;
+  --color-dblue-600: #0284C7;
+  --color-dblue-700: #0369A1;
+  --color-dblue-800: #075985;
+  --color-dblue-900: #0C4A6E;
   /* Coral accent palette - warmth, smiles, results */
   --color-coral-50: #FFF5F6;
   --color-coral-100: #FFE4E8;
@@ -96,38 +107,39 @@
 
 :root {
   --radius: 0.625rem;
-  /* Dental clinic palette: Teal + Coral + Mint + Navy */
+  /* Dental clinic palette: Teal + Coral + Mint + Navy
+     — Primary accent switched to light dental blue (sky) for buttons */
   --background: #FAFCFB;
   --foreground: #1A2332;
   --card: #FFFFFF;
   --card-foreground: #1A2332;
   --popover: #FFFFFF;
   --popover-foreground: #1A2332;
-  --primary: #1B7A6E;
+  --primary: #0EA5E9;
   --primary-foreground: #FFFFFF;
-  --secondary: #F0F7F5;
-  --secondary-foreground: #1A2332;
+  --secondary: #EFF8FF;
+  --secondary-foreground: #0C4A6E;
   --muted: #F0F7F5;
   --muted-foreground: #5E6D80;
   --accent: #E8637C;
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(27, 122, 110, 0.12);
-  --input: rgba(27, 122, 110, 0.15);
-  --ring: #1B7A6E;
-  --chart-1: #1B7A6E;
-  --chart-2: #2DA89E;
+  --border: rgba(14, 165, 233, 0.14);
+  --input: rgba(14, 165, 233, 0.18);
+  --ring: #0EA5E9;
+  --chart-1: #0EA5E9;
+  --chart-2: #38BDF8;
   --chart-3: #1A2332;
   --chart-4: #E8637C;
   --chart-5: #5E6D80;
   --sidebar: #FAFCFB;
   --sidebar-foreground: #1A2332;
-  --sidebar-primary: #1B7A6E;
+  --sidebar-primary: #0EA5E9;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F0F7F5;
-  --sidebar-accent-foreground: #1A2332;
-  --sidebar-border: rgba(27, 122, 110, 0.10);
-  --sidebar-ring: #1B7A6E;
+  --sidebar-accent: #EFF8FF;
+  --sidebar-accent-foreground: #0C4A6E;
+  --sidebar-border: rgba(14, 165, 233, 0.12);
+  --sidebar-ring: #0EA5E9;
 
   /* Dental Teal palette */
   --teal-50: #F0FAF8;
@@ -140,6 +152,18 @@
   --teal-700: #114E47;
   --teal-800: #0D3A35;
   --teal-900: #092824;
+
+  /* Dental Blue palette — light sky blue for buttons & primary accents */
+  --dblue-50: #EFF8FF;
+  --dblue-100: #DBEEFE;
+  --dblue-200: #BAE0FD;
+  --dblue-300: #7DCFFC;
+  --dblue-400: #38BDF8;
+  --dblue-500: #0EA5E9;
+  --dblue-600: #0284C7;
+  --dblue-700: #0369A1;
+  --dblue-800: #075985;
+  --dblue-900: #0C4A6E;
 
   /* Coral accent palette */
   --coral-50: #FFF5F6;
@@ -727,11 +751,11 @@ section[id] {
 }
 
 /* ================================================================== */
-/*  CTA Button — Teal gradient                                         */
+/*  CTA Button — Dental light-blue gradient                             */
 /* ================================================================== */
 .btn-cta {
   position: relative; overflow: hidden;
-  background: linear-gradient(135deg, #1B7A6E, #2DA89E, #6BCDB8);
+  background: linear-gradient(135deg, #0284C7, #0EA5E9, #38BDF8);
   background-size: 200% auto;
   transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
 }
@@ -755,7 +779,7 @@ section[id] {
 }
 .btn-cta:hover::before { opacity: 1; }
 .btn-cta:hover {
-  transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px rgba(27, 122, 110, 0.35);
+  transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px rgba(14, 165, 233, 0.40);
   background-position: right center;
 }
 
@@ -1274,18 +1298,18 @@ section[id] {
   height: 15px !important;
 }
 
-/* ── CTA Button — Pill-shaped deep teal ── */
+/* ── CTA Button — Pill-shaped dental blue ── */
 .hdr-cta-pill {
   position: relative;
   overflow: hidden;
   border-radius: 999px;
   padding: 0 30px;
   height: 50px;
-  background: linear-gradient(135deg, #0D3A35, #1B7A6E, #16635A);
+  background: linear-gradient(135deg, #0369A1, #0EA5E9, #0284C7);
   background-size: 200% auto;
   box-shadow:
-    0 6px 24px rgba(13, 58, 53, 0.22),
-    0 2px 6px rgba(27, 122, 110, 0.10);
+    0 6px 24px rgba(3, 105, 161, 0.22),
+    0 2px 6px rgba(14, 165, 233, 0.12);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hdr-cta-pill::before {
@@ -1293,7 +1317,7 @@ section[id] {
   position: absolute;
   inset: -3px;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(27, 122, 110, 0.30), rgba(107, 205, 184, 0.15));
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.30), rgba(125, 207, 252, 0.18));
   opacity: 0;
   filter: blur(10px);
   z-index: -1;
@@ -1303,9 +1327,9 @@ section[id] {
 .hdr-cta-pill:hover {
   background-position: right center;
   box-shadow:
-    0 10px 36px rgba(13, 58, 53, 0.28),
-    0 4px 10px rgba(27, 122, 110, 0.15),
-    0 0 24px rgba(27, 122, 110, 0.08);
+    0 10px 36px rgba(3, 105, 161, 0.30),
+    0 4px 10px rgba(14, 165, 233, 0.18),
+    0 0 24px rgba(14, 165, 233, 0.10);
   transform: translateY(-2px);
 }
 
@@ -1313,14 +1337,14 @@ section[id] {
 .hdr-cta-mobile {
   border-radius: 12px !important;
   height: 42px !important;
-  box-shadow: 0 4px 16px rgba(13, 58, 53, 0.20) !important;
+  box-shadow: 0 4px 16px rgba(3, 105, 161, 0.20) !important;
 }
 
 .hdr-hamburger:hover {
-  background: rgba(27, 122, 110, 0.06);
+  background: rgba(14, 165, 233, 0.06);
 }
 .hdr-hamburger:active {
-  background: rgba(27, 122, 110, 0.10);
+  background: rgba(14, 165, 233, 0.10);
 }
 
 /* ================================================================== */

@@ -110,18 +110,20 @@ export default function BackgroundMusic() {
 
   return (
     <div
-      className="fixed bottom-8 start-8 z-40 flex items-end gap-2"
+      className="fixed bottom-8 right-4 sm:right-8 z-40 flex flex-col items-center gap-2"
       onMouseEnter={() => setShowVolume(true)}
       onMouseLeave={() => setShowVolume(false)}
     >
-      {/* Volume slider - appears on hover */}
+      {/* Volume slider — appears above the button on hover (absolute, no layout push) */}
       <div
-        className={`transition-all duration-300 ${
-          showVolume ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"
+        className={`absolute bottom-full mb-2 transition-all duration-300 ${
+          showVolume
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg shadow-teal-500/10 border border-teal-100/60 p-3 flex flex-col items-center gap-2">
-          <span className="text-[9px] font-semibold text-teal-700 whitespace-nowrap">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg shadow-sky-500/10 border border-sky-100/60 p-3 flex flex-col items-center gap-2">
+          <span className="text-[9px] font-semibold text-sky-700 whitespace-nowrap">
             {t("music.label")}
           </span>
           <input
@@ -131,40 +133,40 @@ export default function BackgroundMusic() {
             step="0.05"
             value={volume}
             onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-            className="w-20 h-1.5 accent-teal-500 cursor-pointer"
+            className="w-20 h-1.5 accent-sky-500 cursor-pointer"
             dir="ltr"
             aria-label={t("music.label")}
           />
           <div className="flex items-center gap-1">
             {volume === 0 ? (
-              <VolumeX className="w-3 h-3 text-teal-500" />
+              <VolumeX className="w-3 h-3 text-sky-500" />
             ) : (
-              <Volume2 className="w-3 h-3 text-teal-500" />
+              <Volume2 className="w-3 h-3 text-sky-500" />
             )}
-            <span className="text-[9px] text-teal-600 font-medium">
+            <span className="text-[9px] text-sky-600 font-medium">
               {Math.round(volume * 100)}%
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main toggle button */}
+      {/* Main toggle button — sits in the bottom-right corner */}
       <button
         onClick={togglePlay}
-        className={`w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 relative ${
+        className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 relative ${
           isPlaying
-            ? "bg-gradient-to-br from-teal-500 to-teal-600 shadow-teal-500/30"
-            : "bg-white/95 backdrop-blur-sm border border-teal-100/60 shadow-teal-500/10"
+            ? "bg-gradient-to-br from-sky-500 to-sky-700 shadow-sky-500/30"
+            : "bg-white/95 backdrop-blur-sm border border-sky-100/60 shadow-sky-500/10"
         }`}
         aria-label={`${t("music.label")} - ${isPlaying ? t("music.on") : t("music.off")}`}
       >
         <Music
-          className={`w-4.5 h-4.5 transition-colors duration-300 ${
-            isPlaying ? "text-white" : "text-teal-600"
+          className={`w-5 h-5 transition-colors duration-300 ${
+            isPlaying ? "text-white" : "text-sky-600"
           }`}
         />
         {isPlaying && (
-          <span className="absolute top-0 start-0 w-full h-full rounded-full animate-ping bg-teal-400/30" />
+          <span className="absolute top-0 start-0 w-full h-full rounded-full animate-ping bg-sky-400/30" />
         )}
       </button>
     </div>

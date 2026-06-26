@@ -29,7 +29,8 @@
     "img_alt": "Imaz Dental Clinic",
     "badge_safe": "Medical License 174291",
     "badge_safe_sub": "Dental Surgeon",
-    "badge_trusted": "Over 8,000 Patients",
+    "badge_trusted": "Happy Patients",
+    "badge_trusted_unit": "Patients",
     "badge_trusted_sub": "Successful Treatments",
     "scroll_down": "Scroll Down"
   },
