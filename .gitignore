@@ -54,3 +54,6 @@ server.log
 /skills/
 # Local SQLite database (regenerate via prisma db push + seed)
 db/
+prisma/*.db
+prisma/*.db-journal
+
